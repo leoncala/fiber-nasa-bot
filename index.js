@@ -1,16 +1,9 @@
-const express = require("express");
-const axios = require("axios");
-
-const app = express();
-app.use(express.json());
-
-// Substitua pelos seus valores da Z-API
-const token = "E5B1E4CB01F1B9F236FCED95";  // token da Z-API
-const instancia = "3E0B7DA2FA9790AEE56202121E6AE94B";  // ID da instância Z-API
-
 // Rota para receber as mensagens do WhatsApp
 app.post("/webhook", async (req, res) => {
   try {
+    // Log para ver a estrutura da requisição
+    console.log("Corpo da requisição recebida:", req.body);
+
     const message = req.body.message?.body;  // Corpo da mensagem recebida
     const sender = req.body.message?.from;   // Número do remetente
 
@@ -38,8 +31,3 @@ app.post("/webhook", async (req, res) => {
   }
 });
 
-// Inicia o servidor na porta definida
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
