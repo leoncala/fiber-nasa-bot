@@ -18,8 +18,8 @@ app.post("/webhook", async (req, res) => {
     // Log para ver a estrutura da requisição
     console.log("Corpo da requisição recebida:", req.body);
 
-    const message = req.body.message?.body;  // Corpo da mensagem recebida
-    const sender = req.body.message?.from;   // Número do remetente
+    const message = req.body.text?.message;  // Corpo da mensagem recebida (ajustado para o novo campo)
+    const sender = req.body.phone;            // Número do remetente (ajustado para o novo campo)
 
     if (message && sender) {
       console.log(`Mensagem recebida: ${message} de ${sender}`);
@@ -44,6 +44,13 @@ app.post("/webhook", async (req, res) => {
     res.sendStatus(500);  // Caso ocorra erro, responde com erro
   }
 });
+
+// Definindo a porta para o servidor Express
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
+
 
 // Definindo a porta para o servidor Express
 const PORT = process.env.PORT || 10000;
