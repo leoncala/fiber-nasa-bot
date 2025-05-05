@@ -1,3 +1,17 @@
+// Importando o express
+const express = require("express");
+const axios = require("axios");  // Para fazer requisições HTTP
+
+// Inicializando o app do express
+const app = express();
+
+// Configurando o express para interpretar o corpo da requisição como JSON
+app.use(express.json());
+
+// Variáveis da Z-API
+const instancia = "3E0B7DA2FA9790AEE56202121E6AE94B";  // Substitua pelo seu ID de instância
+const token = "E5B1E4CB01F1B9F236FCED95";  // Substitua pelo seu token
+
 // Rota para receber as mensagens do WhatsApp
 app.post("/webhook", async (req, res) => {
   try {
@@ -31,3 +45,8 @@ app.post("/webhook", async (req, res) => {
   }
 });
 
+// Definindo a porta para o servidor Express
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
