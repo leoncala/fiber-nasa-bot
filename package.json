@@ -1,13 +1,14 @@
 {
   "name": "fiber-nasa-bot",
   "version": "1.0.0",
+  "description": "Chatbot da Fiber Nasa usando Z-API e ChatGPT",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "body-parser": "^1.19.0"
+    "axios": "^1.6.8",
+    "express": "^4.19.2"
   }
 }
